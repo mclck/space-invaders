@@ -11,7 +11,7 @@ http://www.softicons.com/free-icons/game-icons/classic-games-icons-by-thvg/
 http://www.classicgaming.cc/classics/spaceinvaders/sounds.php
 
 ### Resources
-http://www.spaceinvaders.de/
-http://www.classicgaming.cc/classics/spaceinvaders/graphics.php
-http://www.brentradio.com/SpaceInvaders.htm
+	* http://www.spaceinvaders.de/
+	* http://www.classicgaming.cc/classics/spaceinvaders/graphics.php
+	* http://www.brentradio.com/SpaceInvaders.htm
 
