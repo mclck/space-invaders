@@ -101,6 +101,26 @@ space_invaders.input = (function () {
         document.addEventListener('keydown', onKeyDown, false);
         document.addEventListener('keyup', onKeyUp, false);
 
+        var fire = document.getElementById('fire');
+        fire.onmousedown = fire.ontouchstart = function() {
+            kbd.pressSpaceBar();
+        };
+
+        var right = document.getElementById('right');
+        right.onmousedown = right.ontouchstart = function() {
+            kbd.pressRightDown(true);
+        };
+        right.onmouseup = right.ontouchend = function() {
+            kbd.pressRightDown(false);
+        };
+
+        var left = document.getElementById('left');
+        left.onmousedown = left.ontouchstart = function() {
+            kbd.pressLeftDown(true);
+        };
+        left.onmouseup = left.ontouchend = function() {
+            kbd.pressLeftDown(false);
+        };
         return kbd;
     }
 

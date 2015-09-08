@@ -14,44 +14,69 @@ var space_invaders = (typeof space_invaders !== "undefined") ? space_invaders : 
 
 space_invaders.util = (function () {
 
+    // This one works great on desktop, but the audio tag doesn't work that well on mobile.
+    // Hence, use howler.js, instead.
+    // https://github.com/goldfire/howler.js
+
     // Inspired and borrowed from: http://www.storiesinflight.com/html5/audio.html
-    var SoundMachine = function(maxChannels) {
-        var count = maxChannels || 10;
+    // var SoundMachine = function(maxChannels) {
+    //     var count = maxChannels || 5;
 
-        if (!SOUND_ON) {
-            this.play = function () {}
-        }
-        else {
-            var audioChannels = [];
+    //     if (!SOUND_ON) {
+    //         this.play = function () {}
+    //     }
+    //     else {
+    //         var audioChannels = [];
 
-            for (var a = 0; a < count; a++) {
-                audioChannels[a] = {
-                    channel: document.createElement('audio'), //new Audio(), // to avoid "Error"
-                    finished: -1
-                }
+    //         for (var a = 0; a < count; a++) {
+    //             audioChannels[a] = {
+    //                 channel: document.createElement('audio'), //new Audio(), // to avoid "Error"
+    //                 finished: -1
+    //             }
+    //         }
+
+    //         var play = function (channel, domElt) {
+    //             channel.src = domElt.src;
+    //             channel.load();
+    //             channel.play();
+    //         };
+
+    //         this.play = function (soundId) {
+    //             var domElt = document.getElementById(soundId);
+    //             // domElt.play();
+    //             if (1) {
+    //                 for (var a = 0; a < audioChannels.length; a++) {
+    //                     var now = new Date().getTime();
+    //                     if (audioChannels[a].finished < now) {
+    //                         audioChannels[a].finished = now + 1000 * domElt.duration;
+    //                         var channel = audioChannels[a].channel;
+    //                         play(channel, domElt);
+    //                         break;
+    //                     }
+    //                 }                    
+    //             }
+    //         };
+    //     }
+    // };
+
+    var SoundMachine = function() {
+        var sound = new Howl({
+            src: ['sounds/sprite.mp3', 'sounds/sprite.ogg', 'sounds/sprite.wav'],
+
+            sprite: {
+                shootSound: [0, 370],
+                explosionSound: [400, 1195-370-50], 
+                invaderKilledSound: [1150, 350],
+                fastInvader1Sound: [1550, 100],
+                fastInvader2Sound: [1650, 100],
+                fastInvader3Sound: [1750, 100]
             }
+        });
 
-            var play = function (channel, domElt) {
-                channel.src = domElt.src;
-                channel.load();
-                channel.play();
-            };
-
-            this.play = function (soundId) {
-                var domElt = document.getElementById(soundId);
-
-                for (var a = 0; a < audioChannels.length; a++) {
-                    var now = new Date().getTime();
-                    if (audioChannels[a].finished < now) {
-                        audioChannels[a].finished = now + 1000 * domElt.duration;
-                        var channel = audioChannels[a].channel;
-                        play(channel, domElt);
-                        break;
-                    }
-                }
-            };
-        }
-    };
+        this.play = function(soundId) {
+            sound.play(soundId);
+        };
+    }
 
     var Display = function() {
         var canvas = document.getElementById('invaderCanvas');
