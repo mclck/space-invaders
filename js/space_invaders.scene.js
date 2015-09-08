@@ -52,7 +52,7 @@ space_invaders.scene = (function () {
             enemy.forEachInvader(function (invader) {
                 if (invader.visible) {
                     allKilled = false;
-                    return true;
+                    return true; // short-circuit for-loop
                 }
             });
             return allKilled;

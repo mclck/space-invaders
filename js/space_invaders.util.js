@@ -14,15 +14,14 @@ var space_invaders = (typeof space_invaders !== "undefined") ? space_invaders : 
 
 space_invaders.util = (function () {
 
-    var soundMachine = new SoundMachine();
-
     // Inspired and borrowed from: http://www.storiesinflight.com/html5/audio.html
-    function SoundMachine(maxChannels) {
+    var SoundMachine = function(maxChannels) {
         var count = maxChannels || 10;
 
         if (!SOUND_ON) {
             this.play = function () {}
-        } else {
+        }
+        else {
             var audioChannels = [];
 
             for (var a = 0; a < count; a++) {
@@ -33,10 +32,10 @@ space_invaders.util = (function () {
             }
 
             var play = function (channel, domElt) {
-                    channel.src = domElt.src;
-                    channel.load();
-                    channel.play();
-                };
+                channel.src = domElt.src;
+                channel.load();
+                channel.play();
+            };
 
             this.play = function (soundId) {
                 var domElt = document.getElementById(soundId);
@@ -52,10 +51,9 @@ space_invaders.util = (function () {
                 }
             };
         }
-    }
+    };
 
-
-    function Display() {
+    var Display = function() {
         var canvas = document.getElementById('invaderCanvas');
         var ctx = canvas.getContext('2d');
 
@@ -96,9 +94,9 @@ space_invaders.util = (function () {
             ctx.fillText(text, x, y);
             ctx.restore();
         }
-    }
+    };
 
-    function CanvasPainter() {
+    var CanvasPainter = function() {
         var display = new Display();
 
         var debug = DEBUG_BLOCK_PAINTER;
@@ -158,6 +156,8 @@ space_invaders.util = (function () {
             display.drawCenteredText(subtitle, 250, 14);
         }
     }
+
+    var soundMachine = new SoundMachine();
 
     return {
         soundMachine: soundMachine,

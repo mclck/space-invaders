@@ -51,6 +51,7 @@ space_invaders.spriteFactory = (function () {
             ship.image = images.ship;
             return ship;
         };
+
         this.createInvader = function (type, x, y) {
             var color, points, width, img;
 
@@ -81,6 +82,7 @@ space_invaders.spriteFactory = (function () {
 
             return invader;
         };
+
         this.createMissile = function () {
             var x = 0; // usually overwritten
             var y = SHIP_GROUND_LEVEL;
@@ -161,8 +163,6 @@ space_invaders.spriteFactory = (function () {
             }
         };
     }
-
-
 
     function Missile(x, y, w, h, speed, bounds) {
         Sprite.apply(this, arguments);
