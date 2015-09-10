@@ -59,7 +59,7 @@
 
         #left, #right, #fire {
             position: fixed;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.2);
             text-align: center;
             border: 1px solid black;
             font-family: Verdana;
@@ -67,7 +67,7 @@
         }
 
         #left:active, #right:active, #fire:active {
-            background-color: rgba(255, 216, 216, 0.5);
+            background-color: rgba(255, 216, 216, 0.2);
         }
 
         #left, #right {
@@ -92,6 +92,7 @@
             line-height: 4rem;
         }
 
+
     </style>
 </head>
 <body>
@@ -107,8 +108,8 @@
  -->
     <canvas id="invaderCanvas" width="800" height="600"></canvas>
 
-    <div id="right" class="noselect">RIGHT</div>
-    <div id="left" class="noselect">LEFT</div>
+    <div id="right" class="noselect"> >> </div>
+    <div id="left" class="noselect"> << </div>
     <div id="fire" class="noselect">FIRE</div>
 
     <script>

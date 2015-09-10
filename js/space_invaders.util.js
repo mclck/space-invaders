@@ -61,7 +61,7 @@ space_invaders.util = (function () {
 
     var SoundMachine = function() {
         var sound = new Howl({
-            src: ['sounds/sprite.mp3', 'sounds/sprite.ogg', 'sounds/sprite.wav'],
+            src: ['sounds/sprite.mp3', 'sounds/sprite.wav', 'sounds/sprite.ogg' /* OGG at end: since Safari/ios doesn't like otherwise*/],
 
             sprite: {
                 shootSound: [0, 370],
